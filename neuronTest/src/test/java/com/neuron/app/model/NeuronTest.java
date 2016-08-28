@@ -51,8 +51,7 @@ public class NeuronTest {
         Neuron neuron = new Neuron();
         neuron.createSynapses(10);
         neuron.setBias(10);
-        neuron.activate();
-        assertEquals("check neuron output after activate", 20, neuron.getOutput());
+        assertEquals("check neuron output after activate", 1, neuron.getOutput());
     }
 
     @Test
@@ -74,9 +73,7 @@ public class NeuronTest {
         Neuron neuron = new Neuron();
         neuron.createSynapses(10);
         neuron.setBias(10);
-        assertEquals("check neuron output before activate", 0, neuron.getOutput());
-        neuron.activate();
-        assertEquals("check neuron output after activate", 20, neuron.getOutput());
+        assertEquals("check neuron output after activate", 1, neuron.getOutput());
     }
 
     @Test
@@ -86,5 +83,4 @@ public class NeuronTest {
         assertEquals("check neuron map's size", 10, neuron.getSynapses().size());
         Assert.assertTrue("check neuron map is a map", neuron.getSynapses() instanceof Map);
     }
-
 }

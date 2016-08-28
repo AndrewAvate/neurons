@@ -1,5 +1,8 @@
 package com.neuron.app.model;
 
+import com.neuron.app.model.activationFunction.ActivationFunction;
+import com.neuron.app.model.activationFunction.ThresholdActivationFunction;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +14,7 @@ public class Neuron {
     //map contains synapses as a key and it's weights as a value
     private Map<Integer, Synapse> synapses = new HashMap<Integer, Synapse>();
     private int bias;
-    private int output;
+    private ActivationFunction activationFunction = new ThresholdActivationFunction();
 
     /**
      * Create neuron's synapses
@@ -39,13 +42,6 @@ public class Neuron {
         return sum;
     }
 
-    /**
-     * Neuron's activation function
-     */
-    public void activate() {
-        output = getNeuronSum() + getBias();
-    }
-
 
     public int getBias() {
         return bias;
@@ -59,10 +55,14 @@ public class Neuron {
      * @return neuron's output signal
      */
     public int getOutput() {
-        return output;
+        return activationFunction.getActivationFunctionOutput(getNeuronSum() + getBias());
     }
 
     public Map<Integer, Synapse> getSynapses() {
         return synapses;
+    }
+
+    public void setActivationFunction(ActivationFunction activationFunction) {
+        this.activationFunction = activationFunction;
     }
 }
