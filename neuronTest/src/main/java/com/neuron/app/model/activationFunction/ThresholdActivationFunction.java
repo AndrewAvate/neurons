@@ -9,6 +9,6 @@ public class ThresholdActivationFunction implements ActivationFunction {
         if (input >= 0) {
             return 1;
         }
-        return -1;
+        return 0;
     }
 }
