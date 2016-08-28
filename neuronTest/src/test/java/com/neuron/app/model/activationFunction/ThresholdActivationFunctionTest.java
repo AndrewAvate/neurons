@@ -10,9 +10,9 @@ import static org.junit.Assert.*;
 public class ThresholdActivationFunctionTest {
 
     @Test
-    public void getActivationFunctionNegativeOutput() throws Exception {
+    public void getActivationFunctionZeroOutput() throws Exception {
         ActivationFunction activationFunction = new ThresholdActivationFunction();
-        assertEquals("check -1 output: ", -1, activationFunction.getActivationFunctionOutput(-34), 0.0001);
+        assertEquals("check 0 output: ", 0, activationFunction.getActivationFunctionOutput(-34), 0.0001);
     }
 
     @Test
