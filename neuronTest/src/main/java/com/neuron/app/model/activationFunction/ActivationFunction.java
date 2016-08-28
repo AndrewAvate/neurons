@@ -5,5 +5,5 @@ package com.neuron.app.model.activationFunction;
  */
 public interface ActivationFunction {
 
-    int getActivationFunctionOutput(int input);
+    double getActivationFunctionOutput(double input);
 }

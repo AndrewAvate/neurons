@@ -13,7 +13,7 @@ public class Neuron {
 
     //map contains synapses as a key and it's weights as a value
     private Map<Integer, Synapse> synapses = new HashMap<Integer, Synapse>();
-    private int bias;
+    private double bias;
     private ActivationFunction activationFunction = new ThresholdActivationFunction();
 
     /**
@@ -21,7 +21,7 @@ public class Neuron {
      *
      * @param size number of synapses
      */
-    public void createSynapses(int size) {
+    public void createSynapses(double size) {
 
         for (int i = 0; i < size; i++) {
             synapses.put(i, new Synapse(1, 1));
@@ -31,11 +31,11 @@ public class Neuron {
     /**
      * @return Sum of the weighted neuron's input signals
      */
-    public int getNeuronSum() {
-        int sum = 0;
+    public double getNeuronSum() {
+        double sum = 0;
         for (Integer key : synapses.keySet()) {
-            int signal = synapses.get(key).getInputSignal();
-            int weight = synapses.get(key).getWeight();
+            double signal = synapses.get(key).getInputSignal();
+            double weight = synapses.get(key).getWeight();
             sum = sum + signal * weight;
         }
 
@@ -43,18 +43,18 @@ public class Neuron {
     }
 
 
-    public int getBias() {
+    public double getBias() {
         return bias;
     }
 
-    public void setBias(int bias) {
+    public void setBias(double bias) {
         this.bias = bias;
     }
 
     /**
      * @return neuron's output signal
      */
-    public int getOutput() {
+    public double getOutput() {
         return activationFunction.getActivationFunctionOutput(getNeuronSum() + getBias());
     }
 

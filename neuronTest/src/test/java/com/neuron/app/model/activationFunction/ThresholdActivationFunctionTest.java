@@ -12,13 +12,13 @@ public class ThresholdActivationFunctionTest {
     @Test
     public void getActivationFunctionNegativeOutput() throws Exception {
         ActivationFunction activationFunction = new ThresholdActivationFunction();
-        assertEquals("check -1 output: ", -1, activationFunction.getActivationFunctionOutput(-34));
+        assertEquals("check -1 output: ", -1, activationFunction.getActivationFunctionOutput(-34), 0.0001);
     }
 
     @Test
     public void getActivationFunctionPositiveOutput() throws Exception {
         ActivationFunction activationFunction = new ThresholdActivationFunction();
-        assertEquals("check +1 output: ", 1, activationFunction.getActivationFunctionOutput(34));
+        assertEquals("check +1 output: ", 1, activationFunction.getActivationFunctionOutput(34), 0.0001);
     }
 
 }

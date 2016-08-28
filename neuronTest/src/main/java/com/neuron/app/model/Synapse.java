@@ -5,27 +5,27 @@ package com.neuron.app.model;
  */
 public class Synapse {
 
-    private int weight;
-    private int inputSignal;
+    private double weight;
+    private double inputSignal;
 
-    public Synapse(int weight, int inputSignal) {
+    public Synapse(double weight, double inputSignal) {
         this.weight = weight;
         this.inputSignal = inputSignal;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public int getInputSignal() {
+    public double getInputSignal() {
         return inputSignal;
     }
 
-    public void setInputSignal(int inputSignal) {
+    public void setInputSignal(double inputSignal) {
         this.inputSignal = inputSignal;
     }
 }

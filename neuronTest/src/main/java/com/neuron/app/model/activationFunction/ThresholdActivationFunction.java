@@ -5,7 +5,7 @@ package com.neuron.app.model.activationFunction;
  */
 public class ThresholdActivationFunction implements ActivationFunction {
 
-    public int getActivationFunctionOutput(int input) {
+    public double getActivationFunctionOutput(double input) {
         if (input >= 0) {
             return 1;
         }
