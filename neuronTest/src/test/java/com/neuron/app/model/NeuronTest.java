@@ -18,7 +18,7 @@ public class NeuronTest {
     public void createSynapsesMapSize() throws Exception {
         Neuron neuron = new Neuron();
         neuron.createSynapses(10);
-        assertEquals("check neuron map's size after calling createSynapses", 10, neuron.getSynapses().size());
+        assertEquals("check neuron map's size after calling createSynapses", 10, neuron.getSynapses().size(), 0.0001);
     }
 
     @Test
@@ -26,7 +26,7 @@ public class NeuronTest {
         Neuron neuron = new Neuron();
         neuron.createSynapses(10);
         for (int i = 0; i < 10; i++) {
-            assertEquals("check synapse's weight after calling createSynapses", 1, neuron.getSynapses().get(i).getWeight());
+            assertEquals("check synapse's weight after calling createSynapses", 1, neuron.getSynapses().get(i).getWeight(), 0.0001);
         }
     }
 
@@ -35,7 +35,7 @@ public class NeuronTest {
         Neuron neuron = new Neuron();
         neuron.createSynapses(10);
         for (int i = 0; i < 10; i++) {
-            assertEquals("check synapse's signal after calling createSynapses", 1, neuron.getSynapses().get(i).getInputSignal());
+            assertEquals("check synapse's signal after calling createSynapses", 1, neuron.getSynapses().get(i).getInputSignal(), 0.0001);
         }
     }
 
@@ -43,7 +43,7 @@ public class NeuronTest {
     public void getNeuronSum() throws Exception {
         Neuron neuron = new Neuron();
         neuron.createSynapses(10);
-        assertEquals("check neuron sum", 10, neuron.getNeuronSum());
+        assertEquals("check neuron sum", 10, neuron.getNeuronSum(), 0.0001);
     }
 
     @Test
@@ -51,22 +51,21 @@ public class NeuronTest {
         Neuron neuron = new Neuron();
         neuron.createSynapses(10);
         neuron.setBias(10);
-        neuron.activate();
-        assertEquals("check neuron output after activate", 20, neuron.getOutput());
+        assertEquals("check neuron output after activate", 1, neuron.getOutput(), 0.0001);
     }
 
     @Test
     public void getBias() throws Exception {
         Neuron neuron = new Neuron();
         neuron.setBias(123);
-        assertEquals("check neuron bias getter", 123, neuron.getBias());
+        assertEquals("check neuron bias getter", 123, neuron.getBias(), 0.0001);
     }
 
     @Test
     public void setBias() throws Exception {
         Neuron neuron = new Neuron();
         neuron.setBias(234);
-        assertEquals("check neuron bias getter", 234, neuron.getBias());
+        assertEquals("check neuron bias getter", 234, neuron.getBias(), 0.0001);
     }
 
     @Test
@@ -74,9 +73,7 @@ public class NeuronTest {
         Neuron neuron = new Neuron();
         neuron.createSynapses(10);
         neuron.setBias(10);
-        assertEquals("check neuron output before activate", 0, neuron.getOutput());
-        neuron.activate();
-        assertEquals("check neuron output after activate", 20, neuron.getOutput());
+        assertEquals("check neuron output after activate", 1, neuron.getOutput(), 0.0001);
     }
 
     @Test
@@ -86,5 +83,4 @@ public class NeuronTest {
         assertEquals("check neuron map's size", 10, neuron.getSynapses().size());
         Assert.assertTrue("check neuron map is a map", neuron.getSynapses() instanceof Map);
     }
-
 }

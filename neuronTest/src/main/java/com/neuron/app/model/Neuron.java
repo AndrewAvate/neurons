@@ -1,5 +1,8 @@
 package com.neuron.app.model;
 
+import com.neuron.app.model.activationFunction.ActivationFunction;
+import com.neuron.app.model.activationFunction.ThresholdActivationFunction;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,15 +13,15 @@ public class Neuron {
 
     //map contains synapses as a key and it's weights as a value
     private Map<Integer, Synapse> synapses = new HashMap<Integer, Synapse>();
-    private int bias;
-    private int output;
+    private double bias;
+    private ActivationFunction activationFunction = new ThresholdActivationFunction();
 
     /**
      * Create neuron's synapses
      *
      * @param size number of synapses
      */
-    public void createSynapses(int size) {
+    public void createSynapses(double size) {
 
         for (int i = 0; i < size; i++) {
             synapses.put(i, new Synapse(1, 1));
@@ -28,41 +31,38 @@ public class Neuron {
     /**
      * @return Sum of the weighted neuron's input signals
      */
-    public int getNeuronSum() {
-        int sum = 0;
+    public double getNeuronSum() {
+        double sum = 0;
         for (Integer key : synapses.keySet()) {
-            int signal = synapses.get(key).getInputSignal();
-            int weight = synapses.get(key).getWeight();
+            double signal = synapses.get(key).getInputSignal();
+            double weight = synapses.get(key).getWeight();
             sum = sum + signal * weight;
         }
 
         return sum;
     }
 
-    /**
-     * Neuron's activation function
-     */
-    public void activate() {
-        output = getNeuronSum() + getBias();
-    }
 
-
-    public int getBias() {
+    public double getBias() {
         return bias;
     }
 
-    public void setBias(int bias) {
+    public void setBias(double bias) {
         this.bias = bias;
     }
 
     /**
      * @return neuron's output signal
      */
-    public int getOutput() {
-        return output;
+    public double getOutput() {
+        return activationFunction.getActivationFunctionOutput(getNeuronSum() + getBias());
     }
 
     public Map<Integer, Synapse> getSynapses() {
         return synapses;
+    }
+
+    public void setActivationFunction(ActivationFunction activationFunction) {
+        this.activationFunction = activationFunction;
     }
 }
