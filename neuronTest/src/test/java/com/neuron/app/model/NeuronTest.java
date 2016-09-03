@@ -1,5 +1,6 @@
 package com.neuron.app.model;
 
+import com.neuron.app.model.activationFunction.SigmoidActivationFunction;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,6 +14,25 @@ import static org.junit.Assert.assertEquals;
  * Created by andrewavetisov on 27.08.16.
  */
 public class NeuronTest {
+
+    @Test
+    public void constructorMapSizeTest() throws Exception {
+        Neuron neuron = new Neuron(23, 1.2, new SigmoidActivationFunction());
+        assertEquals("check neuron map's size after creation", 23, neuron.getSynapses().size(), 0);
+    }
+
+    @Test
+    public void constructorBiasTest() throws Exception {
+        Neuron neuron = new Neuron(23, 1.2, new SigmoidActivationFunction());
+        assertEquals("check neuron bias after creation", 1.2, neuron.getBias(), 0);
+    }
+
+    @Test
+    public void constructorActivationFunctionTest() throws Exception {
+        Neuron neuron = new Neuron(23, 1.2, new SigmoidActivationFunction());
+        assertEquals("check neuron output after creation", 0.997647684429022, neuron.getOutput(), 0);
+    }
+
 
     @Test
     public void createSynapsesMapSize() throws Exception {
