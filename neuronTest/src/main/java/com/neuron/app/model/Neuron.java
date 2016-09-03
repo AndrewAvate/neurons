@@ -16,6 +16,15 @@ public class Neuron {
     private double bias;
     private ActivationFunction activationFunction = new ThresholdActivationFunction();
 
+    public Neuron() {
+    }
+
+    public Neuron(double size, double bias, ActivationFunction activationFunction) {
+        this.bias = bias;
+        this.activationFunction = activationFunction;
+        createSynapses(size);
+    }
+
     /**
      * Create neuron's synapses
      *
